@@ -1,13 +1,15 @@
-import { useState } from 'react'
-import './App.css'
+import { useEffect } from "react";
+import { MainScreen } from "./components/mainScreen/mainScreen";
+
+import { GlobalStyle } from "./global";
 
 function App() {
-
-
   return (
-    <div className="App">
-    </div>
-  )
+    <>
+      <MainScreen />
+      <GlobalStyle />
+    </>
+  );
 }
 
-export default App
+export default App;
