@@ -1,4 +1,4 @@
-<h1 align="center">Números da Sorte, projeto Loteria</h1>
+<h1 align="center">Números da Sorte, projeto Loteria 👑</h1>
 
 ## Descrição do Projeto
 
@@ -20,29 +20,31 @@ As seguintes ferramentas foram usadas na construção do projeto:
 ### Versão Web 💻
 
 <h2 align="center">
-  <img alt="Números sorteados na Mega Sena" title="versãoWeb" src="./img/capaMegaSena.png" />
+  <img alt="Números sorteados na Mega Sena" title="versãoWeb" src="./src/img/capaMegaSena.png" />
 </h2>
 
 ### Versão Mobile 📱
 
 <h2 align="center">
-  <img alt="Números sorteados na Mega Sena" title="versãoMobile" src="./img/capaMegaSenaMob.png" />
+  <img alt="Números sorteados na Mega Sena" title="versãoMobile" src="./src/img/capaMegaSenaMob.png" />
 </h2>
 
-# Clone este repositório
+# Como Iniciar o Projeto 🤖
+
+1 - Clone este repositório
 
 $ git clone <https://github.com/eron300/Loteria.git>
 
-# Acesse a pasta do projeto no terminal/cmd
+2 -  Acesse a pasta do projeto no terminal/cmd
 
-# Verifique se está na pasta correta, caso esteja uma pasta antes
+3 - Verifique se está na pasta correta, caso esteja uma pasta antes
 
 $ cd Loteria
 
-# Instale as dependências
+4 - Instale as dependências
 
 $ npm install
 
-# Execute a aplicação em modo de desenvolvimento
+5 - Execute a aplicação em modo de desenvolvimento
 
 $ npm run dev
