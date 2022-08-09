@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Concurso, ConcursoId, Loteria } from "../types/interfaces";
 import {
   urlConcursoById,
   urlLoterias,
@@ -7,23 +8,6 @@ import {
 } from "../utils/urlApi";
 
 export const AuthContext = React.createContext<any>({});
-
-export interface Loteria {
-  id: number;
-  nome: string;
-}
-
-export interface Concurso {
-  loteriaId: number;
-  concursoId: string;
-}
-
-export interface ConcursoId {
-  data: string;
-  id: string;
-  loteria: number;
-  numeros: string[];
-}
 
 export const AuthProvider = (props: {
   children:
@@ -40,10 +24,11 @@ export const AuthProvider = (props: {
   const [concurso, setConcurso] = useState<Array<Concurso>>();
   const [concursoId, setConcursoId] = useState<ConcursoId>();
   const [value, setValue] = useState("");
-  const [currentLottery, setCurrentLottery] = useState("");
+  const [currentLottery, setCurrentLottery] = useState("Mega-Sena");
+  const [loading, setLoading] = useState(false);
 
-  const GetConcurso = () => {
-    axios
+  const GetConcurso = async () => {
+    await axios
       .get(urlLoterias)
       .then((response) => {
         setLoterias(response.data);
@@ -51,17 +36,18 @@ export const AuthProvider = (props: {
       .catch((error) => console.log(error));
   };
 
-  const GetLoteriasConcurso = () => {
-    axios
+  const GetLoteriasConcurso = async () => {
+    await axios
       .get(urlLoteriasConcursos)
       .then((response) => {
         setConcurso(response.data);
+        setLoading(true);
       })
       .catch((error) => console.log(error));
   };
 
-  const GetConcursoById = (props: string) => {
-    axios
+  const GetConcursoById = async (props: string) => {
+    await axios
       .get(`${urlConcursoById}/${props}`)
       .then((response) => {
         setConcursoId(response.data);
@@ -72,6 +58,8 @@ export const AuthProvider = (props: {
   useEffect(() => {
     if (concurso) {
       GetConcursoById(concurso[+value].concursoId);
+    } else {
+      GetConcursoById("2359");
     }
   }, [value]);
 
@@ -92,6 +80,7 @@ export const AuthProvider = (props: {
         concursoId,
         currentLottery,
         setCurrentLottery,
+        loading,
       }}
     >
       {props.children} 

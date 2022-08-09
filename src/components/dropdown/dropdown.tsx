@@ -21,13 +21,16 @@ export function Dropdown() {
 
   return (
     <div>
-      <Select onChange={handleChange}>
-        {loterias &&
-          loterias.map((item: Loteria) => (
-            <option id={item.id.toString()} key={item.id}>
-              {item.nome}
-            </option>
-          ))}
+      <Select data-testid="select" onChange={handleChange}>
+        {loterias?.map((item: Loteria) => (
+          <option
+            data-testid={"id" + item.id.toString()}
+            id={item.id.toString()}
+            key={item.id}
+          >
+            {item.nome}
+          </option>
+        ))}
       </Select>
     </div>
   );

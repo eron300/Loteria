@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { MainScreen } from "./components/mainScreen/mainScreen";
 
 import { GlobalStyle } from "./global";

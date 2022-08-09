@@ -1,14 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { ReactElement, useContext, useEffect, useState } from "react";
 import { CircleWithNumber } from "../circleWithNumber/circle";
 
-import { Container, Sidebar } from "./styles";
+import { Container, Sidebar, Title } from "./styles";
 import { Dropdown } from "../dropdown/dropdown";
 import { AuthContext } from "../../providers/auth";
-
 import Logo_Sena from "../../img/Logo_Sena.svg";
 
-export function MainScreen() {
-  const { concursoId, currentLottery } = useContext(AuthContext);
+export function MainScreen(): ReactElement {
+  const { concursoId, currentLottery, loading } = useContext(AuthContext);
   const [year, setYear] = useState("");
   const [month, setMonth] = useState("");
   const [day, setDay] = useState("");
@@ -23,24 +22,28 @@ export function MainScreen() {
   }, [concursoId]);
 
   return (
-    <Container loterryColor={currentLottery}>
-      <Sidebar>
-        <Dropdown />
-        <div style={{ display: "flex", gap: "1em", alignItems: "center" }}>
-          <img src={Logo_Sena} />
-          <h1>{currentLottery}</h1>
-        </div>
-        <div />
-        <p>
-          CONCURSO
-          <br />
-          <b>
-            {concursoId &&
-              concursoId.id + " - " + day + " / " + month + " / " + year}
-          </b>
-        </p>
-      </Sidebar>
-      <CircleWithNumber />
-    </Container>
+    <>
+      <Container loterryColor={currentLottery}>
+        <Sidebar>
+          <Dropdown />
+          <Title>
+            <img src={Logo_Sena} />
+            <div>
+              <h1 data-testid="title">{currentLottery}</h1>
+            </div>
+          </Title>
+          <div />
+          <p>
+            CONCURSO
+            <br />
+            <b>
+              {concursoId &&
+                concursoId.id + " - " + day + " / " + month + " / " + year}
+            </b>
+          </p>
+        </Sidebar>
+        <CircleWithNumber />
+      </Container>
+    </>
   );
 }

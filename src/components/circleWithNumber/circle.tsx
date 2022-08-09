@@ -8,7 +8,7 @@ export function CircleWithNumber() {
   return (
     <ContainerCircle>
       {concursoId?.numeros.map((item: string) => (
-        <Circle>{item}</Circle>
+        <Circle key={item}>{item}</Circle>
       ))}
     </ContainerCircle>
   );

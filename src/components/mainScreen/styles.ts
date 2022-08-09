@@ -1,5 +1,6 @@
 import { ReactElement } from "react";
 import styled from "styled-components";
+import { LoterryColor } from "../../types/interfaces";
 import {
   green,
   white,
@@ -10,14 +11,11 @@ import {
   beige,
 } from "../../utils/colors";
 
-interface LoterryColor {
-  loterryColor?: string;
-}
-
 export const Container = styled.div<LoterryColor>`
   display: flex;
-  height: 100vh;
-  overflow: auto;
+  flex-grow: 1;
+  flex-basis: auto;
+
   background-color: ${({ loterryColor }: LoterryColor) =>
     loterryColor == "mega-sena"
       ? green
@@ -39,16 +37,19 @@ export const Container = styled.div<LoterryColor>`
 `;
 
 export const Sidebar = styled.div`
-  width: calc(100% / 3);
+  width: calc(100% / 2.5);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10em;
+  padding: 1em;
+  text-align: center;
 
   h1 {
     color: ${white};
     text-transform: capitalize;
+    font-size: 2.8em;
   }
 
   p {
@@ -57,7 +58,48 @@ export const Sidebar = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
-    gap: 6em;
-    padding: 1em;
+    gap: 0;
+    height: 40%;
+    padding: 3.4em;
+
+    h1 {
+      font-size: 2em;
+      margin-top: 0;
+    }
+
+    p {
+      font-size: 0.8em;
+    }
+  }
+
+  @media (max-height: 768px) {
+    gap: 0;
+  }
+`;
+
+export const Title = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  div {
+    padding-top: 14%;
+    word-wrap: break-word;
+    width: 80%;
+  }
+
+  img {
+    width: 24%;
+  }
+
+  @media (max-width: 768px) {
+    margin: 1em;
+    flex-direction: column;
+    gap: 0.5em;
+
+    div {
+      padding-top: 0;
+      width: 100%;
+    }
   }
 `;
